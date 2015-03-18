@@ -5,6 +5,8 @@ import java.sql.Timestamp;
 import javax.annotation.Resource;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
@@ -18,11 +20,23 @@ import javax.persistence.Id;
 public class User_Activate {
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	private int userid;
+	private String email;
 	private String activecode;
 	@Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	private Timestamp createdate;
+
+	public User_Activate(){}
+	/**
+	 * @param email
+	 * @param activecode
+	 */
+	public User_Activate(String email, String activecode) {
+		super();
+		this.email = email;
+		this.activecode = activecode;
+	}
 
 	public int getId() {
 		return id;
@@ -40,12 +54,12 @@ public class User_Activate {
 		this.createdate = createdate;
 	}
 
-	public int getUserid() {
-		return userid;
+	public String getUsername() {
+		return email;
 	}
 
-	public void setUserid(int userid) {
-		this.userid = userid;
+	public void setUsername(String username) {
+		this.email = username;
 	}
 
 	public String getActivecode() {

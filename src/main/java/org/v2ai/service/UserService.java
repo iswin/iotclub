@@ -1,23 +1,27 @@
-package org.v2ai.dao;
+package org.v2ai.service;
 
 import org.v2ai.entity.User;
 
 /**
- * @ClassName: UserDao.java
+ * @ClassName: UserService.java
  * @Description: TODO
  * @author iswin
  * @email admin@iswin.org
- * @Date 2015年3月14日 下午11:56:05
+ * @Date 2015年3月16日 上午12:26:16
  */
-public interface UserDao {
+public interface UserService {
 
 	void register(User u);
 
+	void modify(User u);
+
 	void delete(User u);
 
-	void modity(User u);
+	boolean login(User u);
 
-	void active(String code, String email);
+	boolean logout(User u);
+
+	void userActive(String code);
 
 	User getUser(User u);
 
@@ -26,10 +30,4 @@ public interface UserDao {
 	User getUserByUsername(String username);
 
 	User getUserByemail(String email);
-
-	boolean login(User u);
-
-	void logout(User u);
-
-	void addActiveLog(String email,String code);
 }

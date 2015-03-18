@@ -2,10 +2,12 @@ package org.v2ai.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import org.v2ai.dao.TagDao;
 import org.v2ai.entity.Tag;
+import org.v2ai.entity.Topic;
 
 /**
  * @ClassName: TagDaoImpl.java
@@ -36,5 +38,11 @@ public class TagDaoImpl extends HibernateBasicDaoSupport implements TagDao {
 	@Override
 	public void modify(Tag tag) {
 		getCurrentSession().update(tag);
+	}
+
+	@Override
+	public List<Topic> getTopicsByTagName(String name) {
+		return getCurrentSession().createCriteria(Topic.class)
+				.add(Restrictions.eq("name", name)).list();
 	}
 }

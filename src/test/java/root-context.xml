@@ -14,12 +14,12 @@
 	<import resource="hibernate.cfg.xml" />
 	<import resource="spring-mail.xml" />
 
-	<!-- 加密相关 -->
+	<!-- 加密相关，配置公钥和私钥 -->
 	<bean id="encryptTemplate" class="org.v2ai.encrypt.RSAUtil">
 		<property name="publicKey" value="${publickey}" />
 		<property name="privateKey" value="${privatekey}" />
 	</bean>
-	
+
 	<!-- 验证码 -->
 	<bean id="captchaProducer" class="com.google.code.kaptcha.impl.DefaultKaptcha">
 		<property name="config">

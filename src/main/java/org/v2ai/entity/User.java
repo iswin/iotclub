@@ -9,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-
 /**
  * @ClassName: User.java
  * @Description: 用户表
@@ -19,27 +18,31 @@ import javax.persistence.Id;
  */
 
 @Entity
-public class User implements Serializable{
+public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@Column(unique = true)
 	private String username;
 	private String password;
+	@Column(unique = true)
 	private String email;
 	private String blog_url;
 	private String signature;
 	private String weibo;
 	private String avatar;
 	private boolean is_block;
+	@Column(columnDefinition = "int default 0")
 	private int score;
 	@Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	private Timestamp register_date;
 	private Timestamp update_date;
 	@Column(columnDefinition = "bool default false")
 	private boolean is_star;
+	@Column(columnDefinition = "varchar(255) default null")
 	private String level;
 	@Column(columnDefinition = "bool default false")
 	private boolean is_active;
@@ -47,6 +50,34 @@ public class User implements Serializable{
 	private boolean notification_reply_mail;
 	@Column(columnDefinition = "bool default true")
 	private boolean notification_at_mail;
+
+	public User() {
+	}
+
+	/**
+	 * @param id
+	 * @param username
+	 * @param password
+	 * @param email
+	 * @param blog_url
+	 * @param signature
+	 * @param weibo
+	 * @param avatar
+	 * @param update_date
+	 */
+	public User(String username, String password, String email,
+			String blog_url, String signature, String weibo, String avatar,
+			Timestamp update_date) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.blog_url = blog_url;
+		this.signature = signature;
+		this.weibo = weibo;
+		this.avatar = avatar;
+		this.update_date = update_date;
+	}
 
 	public int getId() {
 		return id;

@@ -32,6 +32,18 @@ public class User_Collection_Topic implements Serializable {
 	@Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	private Timestamp create_date;
 
+	public User_Collection_Topic(){}
+	
+	/**
+	 * @param user_id
+	 * @param topic_id
+	 */
+	public User_Collection_Topic(int user_id, int topic_id) {
+		super();
+		this.user_id = user_id;
+		this.topic_id = topic_id;
+	}
+
 	public int getId() {
 		return id;
 	}

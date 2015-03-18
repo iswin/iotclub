@@ -31,7 +31,7 @@ public class HomeController {
 		tagDao.add(new Tag("iswin", "test", 1));
 		System.out.println(tagDao.getAllTags().get(0).getDescription());
 		try {
-			userdao.active("iswinsssss");
+			//userdao.active("iswinsssss");
 		} catch (UnknownError e) {
 			model.addAttribute("serverTime", e.getMessage());
 		}
