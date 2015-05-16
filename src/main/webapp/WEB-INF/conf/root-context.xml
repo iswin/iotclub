@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+       
 	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 	http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -14,12 +16,12 @@
 	<import resource="hibernate.cfg.xml" />
 	<import resource="spring-mail.xml" />
 
-	<!-- 加密相关 -->
+	<!-- 加密相关，配置公钥和私钥 -->
 	<bean id="encryptTemplate" class="org.v2ai.encrypt.RSAUtil">
 		<property name="publicKey" value="${publickey}" />
 		<property name="privateKey" value="${privatekey}" />
 	</bean>
-	
+
 	<!-- 验证码 -->
 	<bean id="captchaProducer" class="com.google.code.kaptcha.impl.DefaultKaptcha">
 		<property name="config">
@@ -30,5 +32,8 @@
 			</bean>
 		</property>
 	</bean>
+	
+	<!-- aspectj -->
+	<bean id="CaptchaAop" class="org.v2ai.aop.CaptchaAop"/>
 
 </beans>

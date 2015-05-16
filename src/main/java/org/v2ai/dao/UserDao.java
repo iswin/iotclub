@@ -1,5 +1,7 @@
 package org.v2ai.dao;
 
+import java.util.List;
+
 import org.v2ai.entity.User;
 
 /**
@@ -32,4 +34,6 @@ public interface UserDao {
 	void logout(User u);
 
 	void addActiveLog(String email,String code);
+	
+	List executeHQL(String hql);
 }

@@ -30,5 +30,8 @@
 			</bean>
 		</property>
 	</bean>
+	
+	<!-- aspectj -->
+	<bean id="CaptchaAop" class="org.v2ai.aop.CaptchaAop"/>
 
 </beans>

@@ -1,5 +1,7 @@
 package org.iswin.iotclub;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.junit.Test;
@@ -32,7 +34,7 @@ public class UserFunctionTest {
 	@Resource(name = "UserDaoImpl")
 	private UserDao userdao;
 
-	@Resource(name = "UserService")
+	@Resource(name = "UserServiceImpl")
 	private UserService userService;
 
 	@Resource
@@ -43,8 +45,8 @@ public class UserFunctionTest {
 
 	@Test
 	public void addUser() {
-		User u = new User("jimwbys", "password", "jimwbys@gmail.com",
-				"http://www.iswin.org", "that is a test", "weibo", "tv", null);
+		User u = new User("test", "password", "test@gmail.com",
+				"http://www.admin.org", "that is a test", "weibo", "tv", null);
 		userService.register(u);
 	}
 
@@ -74,5 +76,13 @@ public class UserFunctionTest {
 	@Test
 	public void encrypt() throws Exception {
 		System.out.println(encryptTemplate.encrypt("admin"));
+	}
+
+	@Test
+	public void testHQL() {
+		List<String> l = userdao
+				.executeHQL("select count(*),concat(floor(rand()*2)) as x from User u group by x");
+		for (String name : l)
+			System.out.println(name);
 	}
 }

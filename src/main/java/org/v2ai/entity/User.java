@@ -39,6 +39,7 @@ public class User implements Serializable {
 	private int score;
 	@Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	private Timestamp register_date;
+	@Column(columnDefinition = "TIMESTAMP DEFAULT 0")
 	private Timestamp update_date;
 	@Column(columnDefinition = "bool default false")
 	private boolean is_star;
@@ -77,6 +78,19 @@ public class User implements Serializable {
 		this.weibo = weibo;
 		this.avatar = avatar;
 		this.update_date = update_date;
+	}
+
+	
+	/**
+	 * @param username
+	 * @param password
+	 * @param email
+	 */
+	public User(String username, String password, String email) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.email = email;
 	}
 
 	public int getId() {

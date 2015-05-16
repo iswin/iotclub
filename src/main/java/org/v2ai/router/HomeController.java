@@ -27,7 +27,6 @@ public class HomeController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
 		tagDao.add(new Tag("iswin", "test", 1));
 		System.out.println(tagDao.getAllTags().get(0).getDescription());
 		try {

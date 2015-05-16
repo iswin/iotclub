@@ -112,4 +112,9 @@ public class UserDaoImpl extends HibernateBasicDaoSupport implements UserDao {
 		getCurrentSession().save(new User_Activate(email, code));
 	}
 
+	@Override
+	public List executeHQL(String hql) {
+		return getCurrentSession().createQuery(hql).list();
+	}
+
 }

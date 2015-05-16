@@ -2,7 +2,6 @@ package org.v2ai.entity;
 
 import java.sql.Timestamp;
 
-import javax.annotation.Resource;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

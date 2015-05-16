@@ -1,5 +1,6 @@
 package org.v2ai.service;
 
+import org.v2ai.entity.Result;
 import org.v2ai.entity.User;
 
 /**
@@ -11,7 +12,7 @@ import org.v2ai.entity.User;
  */
 public interface UserService {
 
-	void register(User u);
+	Result register(User u);
 
 	void modify(User u);
 
